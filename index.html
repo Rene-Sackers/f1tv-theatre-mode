@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 10px;
+        }
+
+        img {
+            max-height: 600px;
+            max-width: calc(100vw - 40px);
+        }
+
+        pre {
+            white-space: pre-wrap;
+        }
+
+        .bookmarklet {
+            display: inline-block;
+            padding: 10px;
+            font-weight: bold;
+            color: #FFF;
+            text-decoration: none;
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <h1>F1TV theatre mode</h1>
+
+    <p>
+        This is a <a href="https://www.freecodecamp.org/news/what-are-bookmarklets/">bookmarklet</a> that lets you put the F1TV web player into "theatre mode".<br>
+        I like to watch F1 practice while doing other things on my PC, but the F1TV player makes this extremely inefficient.<br>
+        There's a lot of bloat around the player, causing the actual player to be very small in the browser window.
+    </p>
+
+    <p>
+        This "bookmarklet" executs a bit of JavaScript that basically hides the entire website, and makes the player stretch across the entire browser window.<br>
+        Simply click the bookmark to toggle between normal website and theatre mode.
+    </p>
+
+    <h2>Comparison</h2>
+    <img src="img/comparison.jpg">
+
+    <h2>Install</h2>
+    <p>
+        Simply drag the button below into your bookmarks bar.
+    </p>
+    
+    <a class="bookmarklet" href="javascript:(()=&gt;{var[e,n]=[document.body,document.getElementsByClassName(&quot;embedded-player-container&quot;)[0]];window.anp=window.anp||n.parentElement,document.getElementById(&quot;app&quot;).style.display=e.toggleAttribute(&quot;x&quot;)&amp;&amp;e.appendChild(n)&amp;&amp;&quot;none&quot;||window.window.anp.appendChild(n)&amp;&amp;&quot;block&quot;})();" onclick="linkClick(event)">F1TV Theatre</a>
+
+    <h2>Original JavaScript</h2>
+<pre>
+    var [body, playerElement] = [document.body, document.getElementsByClassName("embedded-player-container")[0]];
+    window.anp = window.anp || playerElement.parentElement;
+    document.getElementById("app").style.display = body.toggleAttribute("x") && (body.appendChild(playerElement) && "none") || (window.window.anp.appendChild(playerElement) && "block")
+</pre>
+
+<script>
+    function linkClick(e) {
+        e.preventDefault();
+        alert("Maybe read the instructions again?");
+        return false;
+    }
+</script>
+    
+</body>
+</html>
